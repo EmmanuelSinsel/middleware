@@ -84,16 +84,14 @@ def buscar(sucursal: str = "matriz",
         if status:
             stmt = stmt.filter(cdr.c.disposition == status)
         row = conn.execute(stmt).all()
-        suc_data = []
         for i in row:
-            suc_data.append({
+            data.append({
                 "fecha": i[0],
                 "origen": i[1],
                 "destino": i[2],
                 "duracion": i[3],
                 "estatus": i[4]
             })
-        data.append({suc:suc_data})
     return data
 
 
